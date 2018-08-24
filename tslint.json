@@ -1,0 +1,20 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js",
+      "public/**",
+      "mergely-webpack/**"
+    ]
+  },
+  "rules": {
+    "no-console": false,
+    "ordered-imports": false,
+    "comment-format": false,
+    "jsx-no-lambda": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false
+  }
+}
