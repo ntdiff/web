@@ -1,3 +1,3 @@
 [submodule "build"]
 	path = build
-	url = ../ntdiff.github.io.git
+	url = git@github.com:ntdiff/ntdiff.github.io.git
