@@ -20,16 +20,42 @@ class AppModel {
     @observable public filenameRight: string = FILENAME_RIGHT_DEFAULT;
     @observable public typeRight: string = TYPE_RIGHT_DEFAULT;
 
-    @computed public get sourceLeft(): string {
-        return `${URL_PREFIX}/${this.versionLeft}/${this.filenameLeft}/${this.typeLeft}.h`;
+    @computed public get sourceLeftPath(): string {
+        return `/${this.versionLeft}/${this.filenameLeft}/${this.typeLeft}.h`;
     }
 
-    @computed public get sourceRight(): string {
-        return `${URL_PREFIX}/${this.versionRight}/${this.filenameRight}/${this.typeRight}.h`;
+    @computed public get sourceRightPath(): string {
+        return `/${this.versionRight}/${this.filenameRight}/${this.typeRight}.h`;
     }
 
-    @computed public get url(): string {
-        return `https://ntdiff-mergely.github.io/?_&lhs=${this.sourceLeft}&rhs=${this.sourceRight}`;
+    @computed public get sourceLeftUrl(): string {
+        return `${URL_PREFIX}${this.sourceLeftPath}`;
+    }
+
+    @computed public get sourceRightUrl(): string {
+        return `${URL_PREFIX}${this.sourceRightPath}`;
+    }
+
+    public serialize() {
+        return {
+            versionLeft: this.versionLeft,
+            filenameLeft: this.filenameLeft,
+            typeLeft: this.typeLeft,
+
+            versionRight: this.versionRight,
+            filenameRight: this.filenameRight,
+            typeRight: this.typeRight
+        };
+    }
+
+    public deserialize(object: any) {
+        this.versionLeft = object.versionLeft;
+        this.filenameLeft = object.filenameLeft;
+        this.typeLeft = object.typeLeft;
+
+        this.versionRight = object.versionRight;
+        this.filenameRight = object.filenameRight;
+        this.typeRight = object.typeRight;
     }
 }
 
